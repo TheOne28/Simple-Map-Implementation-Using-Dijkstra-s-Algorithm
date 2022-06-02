@@ -1,7 +1,12 @@
+from model.graph import Graph
+from helperFunction import getN, updateEdge
 
+def main():    
+    graph = Graph(getN())
 
-def main():
-    pass
+    updateEdge(graph)
+    
+
 
 if __name__ == "__main__":
     main()
