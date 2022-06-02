@@ -1,4 +1,5 @@
 from attr import field
+from numpy import intp
 from model.graph import Graph
 from pathlib import Path
 
@@ -51,3 +52,12 @@ def updateEdge(graph: Graph, countNode) -> None:
     except Exception as e:
         print(e.with_traceback())
         raise("Error saat membaca file")
+
+def getStartDestNode() -> list[int, int]:
+    start = int(input("Masukkan start node: "))
+    end = int(input("Masukkan end node: "))
+
+    if(not validateNode(start) or not validateNode(end)):
+        raise("Node tidak valid")
+    
+    return [start, end]

@@ -10,5 +10,5 @@ class Graph:
         self.adjMatrix[src][dest] = weight
         
 
-    def djikstr(self):
+    def djikstr(self, start, dest):
         pass
