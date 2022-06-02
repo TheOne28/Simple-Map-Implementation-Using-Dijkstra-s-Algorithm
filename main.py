@@ -2,9 +2,10 @@ from model.graph import Graph
 from helperFunction import getN, updateEdge
 
 def main():    
-    graph = Graph(getN())
+    numb = getN()
+    graph = Graph(numb)
 
-    updateEdge(graph)
+    updateEdge(graph, numb)
     
 
 
