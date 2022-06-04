@@ -9,8 +9,9 @@ class Graph:
 
         self.adjMatrix[src][dest] = weight
         
-    def updateDistance(self, node : int) -> None:
-        pass
+    def updateDistance(self, node : int, value: int) -> None:
+        for i in range(len(self.node)):
+            self.adjMatrix[node][i] = self.adjMatrix[node][i] + value
     
     def getMinimum(self, node, visited : list) -> tuple(int, int):
         toCheck = self.adjMatrix[node]
@@ -32,10 +33,17 @@ class Graph:
                 
         
 
-    def djikstr(self, start, dest) -> None:
+    def djikstra(self, start, dest) -> int:
         visited = []
 
         current = start - 1
-        
+        distance = 0
         while(current != dest - 1):
-            toCheck = self.adjMatrix[current]
+            minimum, ind = self.getMinimum(visited)
+            visited.append(ind)
+            current = ind
+            distance += minimum
+            self.updateDistance(ind, minimum)
+
+        return distance       
+
