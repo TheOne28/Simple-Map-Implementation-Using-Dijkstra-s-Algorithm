@@ -1,7 +1,7 @@
 class Graph:
     def __init__(self, node : int) -> None:
         self.node = [i for i in range (1, node + 1)]
-        self.adjMatrix = [[-1 for i in range(len(node))] for j in range (len(node))]
+        self.adjMatrix = [[-1 for i in range(len(self.node))] for j in range (len(self.node))]
     
     def addWeight(self, src : int, dest: int, weight: int) -> None:
         if(src not in self.node or dest not in self.node):
@@ -13,7 +13,7 @@ class Graph:
         for i in range(len(self.node)):
             self.adjMatrix[node][i] = self.adjMatrix[node][i] + value
     
-    def getMinimum(self, node, visited : list) -> tuple(int, int):
+    def getMinimum(self, node, visited : list) -> list[int, int]:
         toCheck = self.adjMatrix[node]
 
         minimum = -1
