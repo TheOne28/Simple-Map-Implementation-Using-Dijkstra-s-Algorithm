@@ -11,9 +11,15 @@ def main():
         print(e)
         return
 
-    start, dest = getStartDestNode()
-
-    graph.djikstra(start, dest)
+    try:
+        start, dest = getStartDestNode(numb)
+    except Exception as e:
+        print(e)
+        return
+    else:
+        print(start, dest)
+        distance = graph.djikstra(start, dest)
+        print(distance)
 
 if __name__ == "__main__":
     main()

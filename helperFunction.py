@@ -51,11 +51,11 @@ def updateEdge(graph: Graph, countNode) -> None:
 
         file.close()
         
-def getStartDestNode() -> list[int, int]:
+def getStartDestNode(countNode: int) -> list[int, int]:
     start = int(input("Masukkan start node: "))
     end = int(input("Masukkan end node: "))
 
-    if(not validateNode(start) or not validateNode(end)):
-        raise("Node tidak valid")
+    if(not validateNode(start, countNode) or not validateNode(end, countNode)):
+        raise Exception("Node tidak valid")
     
     return [start, end]

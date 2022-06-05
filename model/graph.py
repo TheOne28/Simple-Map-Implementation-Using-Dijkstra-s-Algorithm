@@ -1,3 +1,5 @@
+INFINITY = 1000000000
+
 class Graph:
     def __init__(self, node : int) -> None:
         self.node = [i for i in range (1, node + 1)]
@@ -7,7 +9,7 @@ class Graph:
         if(src not in self.node or dest not in self.node):
             raise("Node tidak ada")
 
-        self.adjMatrix[src][dest] = weight
+        self.adjMatrix[src - 1][dest - 1] = weight
         
     def updateDistance(self, node : int, value: int) -> None:
         for i in range(len(self.node)):
@@ -34,12 +36,27 @@ class Graph:
         
 
     def djikstra(self, start, dest) -> int:
+        # Start dan dest masih one indexing, diubah ke zero indexing
+        start -= 1
+        dest -= 1
+
+        for row in self.adjMatrix:
+            for numb in row:
+                print(numb, end = " ")
+            print("\n")
         visited = []
+        allDistance = [INFINITY for i in range(len(self.node))]
+        distance = 0
+
 
         current = start - 1
-        distance = 0
+
         while(current != dest - 1):
-            minimum, ind = self.getMinimum(visited)
+            if(self.adjMatrix[current][dest - 1] != -1):
+                distance += self.adjMatrix[current][dest - 1]
+                break
+
+            minimum, ind = self.getMinimum(current, visited)
             visited.append(ind)
             current = ind
             distance += minimum
